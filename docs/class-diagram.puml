@@ -1,0 +1,28 @@
+@startuml
+interface RouteStrategy {
+ +selectRoute(routes, request): RouteDecision
+ +getStrategyName(): String
+}
+class RoutePlanner
+class StrategySelector
+class Route
+class Location
+class DeliveryRequest
+class RouteDecision
+class FastestRouteStrategy
+class CheapestRouteStrategy
+class EcoFriendlyRouteStrategy
+class BalancedRouteStrategy
+class DistanceFirstRouteStrategy
+RoutePlanner o--> RouteStrategy
+StrategySelector --> RouteStrategy
+RouteStrategy <|.. FastestRouteStrategy
+RouteStrategy <|.. CheapestRouteStrategy
+RouteStrategy <|.. EcoFriendlyRouteStrategy
+RouteStrategy <|.. BalancedRouteStrategy
+RouteStrategy <|.. DistanceFirstRouteStrategy
+RouteStrategy ..> RouteDecision
+RouteStrategy ..> DeliveryRequest
+RouteDecision --> Route
+Route --> Location
+@enduml
